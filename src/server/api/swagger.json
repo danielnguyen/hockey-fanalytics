@@ -1,0 +1,58 @@
+{
+	"basePath": "/v1",
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"ResponseModel": {
+			"properties": {
+				"status": {
+					"type": "number",
+					"format": "double"
+				},
+				"message": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"status",
+				"message"
+			],
+			"type": "object"
+		}
+	},
+	"info": {
+		"title": "hockey-fanalytics",
+		"version": "1.0.0",
+		"description": "Hockey Fanalytics application",
+		"license": {
+			"name": "ISC"
+		}
+	},
+	"paths": {
+		"/HealthCheck": {
+			"get": {
+				"operationId": "GetHealth",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ResponseModel"
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"swagger": "2.0",
+	"securityDefinitions": {},
+	"host": "localhost:3000"
+}
