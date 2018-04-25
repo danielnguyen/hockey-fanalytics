@@ -16,6 +16,8 @@ const localtunnel = require('localtunnel');
 
 // Import API controllers for tsoa crawl
 import './server/api/controllers/health';
+import './server/api/controllers/NHLAPI';
+import './server/api/controllers/Teams';
 
 main().catch(err => {
     console.error('Cannot start Hockey Fanalytics.', err);

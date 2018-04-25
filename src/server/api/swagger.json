@@ -19,6 +19,289 @@
 				"message"
 			],
 			"type": "object"
+		},
+		"TeamVenue": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"link": {
+					"type": "string"
+				},
+				"city": {
+					"type": "string"
+				},
+				"timeZone": {
+					"type": "object"
+				}
+			},
+			"required": [
+				"name",
+				"link",
+				"city",
+				"timeZone"
+			],
+			"type": "object"
+		},
+		"Conference": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double"
+				},
+				"name": {
+					"type": "string"
+				},
+				"link": {
+					"type": "string"
+				},
+				"abbreviation": {
+					"type": "string"
+				},
+				"shortName": {
+					"type": "string"
+				},
+				"active": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"id",
+				"name",
+				"link"
+			],
+			"type": "object"
+		},
+		"Division": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double"
+				},
+				"name": {
+					"type": "string"
+				},
+				"link": {
+					"type": "string"
+				},
+				"abbreviation": {
+					"type": "string"
+				},
+				"conference": {
+					"$ref": "#/definitions/Conference"
+				},
+				"active": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"id",
+				"name",
+				"link"
+			],
+			"type": "object"
+		},
+		"Franchise": {
+			"properties": {
+				"franchiseId": {
+					"type": "number",
+					"format": "double"
+				},
+				"teamName": {
+					"type": "string"
+				},
+				"link": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"franchiseId",
+				"teamName",
+				"link"
+			],
+			"type": "object"
+		},
+		"Team": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double"
+				},
+				"name": {
+					"type": "string"
+				},
+				"link": {
+					"type": "string"
+				},
+				"venue": {
+					"$ref": "#/definitions/TeamVenue"
+				},
+				"abbreviation": {
+					"type": "string"
+				},
+				"teamName": {
+					"type": "string"
+				},
+				"locationName": {
+					"type": "string"
+				},
+				"firstYearOfPlay": {
+					"type": "string"
+				},
+				"division": {
+					"$ref": "#/definitions/Division"
+				},
+				"conference": {
+					"$ref": "#/definitions/Conference"
+				},
+				"franchise": {
+					"$ref": "#/definitions/Franchise"
+				},
+				"shortName": {
+					"type": "string"
+				},
+				"officialSiteUrl": {
+					"type": "string"
+				},
+				"franchiseId": {
+					"type": "number",
+					"format": "double"
+				},
+				"active": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"id",
+				"name",
+				"link"
+			],
+			"type": "object"
+		},
+		"PlayerPosition": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"abbreviation": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"type",
+				"abbreviation"
+			],
+			"type": "object"
+		},
+		"Player": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double"
+				},
+				"fullName": {
+					"type": "string"
+				},
+				"link": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"primaryNumber": {
+					"type": "string"
+				},
+				"birthDate": {
+					"type": "string"
+				},
+				"currentAge": {
+					"type": "number",
+					"format": "double"
+				},
+				"birthCity": {
+					"type": "string"
+				},
+				"birthStateProvince": {
+					"type": "string"
+				},
+				"birthCountry": {
+					"type": "string"
+				},
+				"nationality": {
+					"type": "string"
+				},
+				"height": {
+					"type": "string"
+				},
+				"weight": {
+					"type": "number",
+					"format": "double"
+				},
+				"active": {
+					"type": "boolean"
+				},
+				"alternateCaptain": {
+					"type": "boolean"
+				},
+				"captain": {
+					"type": "boolean"
+				},
+				"rookie": {
+					"type": "boolean"
+				},
+				"shootsCatches": {
+					"type": "string"
+				},
+				"rosterStatus": {
+					"type": "string"
+				},
+				"currentTeam": {
+					"$ref": "#/definitions/Team"
+				},
+				"primaryPosition": {
+					"$ref": "#/definitions/PlayerPosition"
+				}
+			},
+			"required": [
+				"id",
+				"fullName",
+				"link"
+			],
+			"type": "object"
+		},
+		"Roster": {
+			"properties": {
+				"person": {
+					"$ref": "#/definitions/Player"
+				},
+				"jerseyNumber": {
+					"type": "string"
+				},
+				"position": {
+					"$ref": "#/definitions/PlayerPosition"
+				}
+			},
+			"required": [
+				"person",
+				"jerseyNumber",
+				"position"
+			],
+			"type": "object"
+		},
+		"Stats": {
+			"properties": {},
+			"type": "object"
+		},
+		"StatRankings": {
+			"properties": {},
+			"type": "object"
 		}
 	},
 	"info": {
@@ -46,6 +329,872 @@
 				},
 				"security": [],
 				"parameters": []
+			}
+		},
+		"/teams": {
+			"get": {
+				"operationId": "GetTeams",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Team"
+							}
+						}
+					}
+				},
+				"tags": [
+					"Teams"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/teams/{teamId}": {
+			"get": {
+				"operationId": "GetTeam",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Team"
+						}
+					}
+				},
+				"tags": [
+					"Teams"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "teamId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/teams/{teamId}/roster": {
+			"get": {
+				"operationId": "GetRoster",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Roster"
+						}
+					}
+				},
+				"tags": [
+					"Teams"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "teamId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"in": "query",
+						"name": "season",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/teams/{teamId}/stats": {
+			"get": {
+				"operationId": "GetStats",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Stats"
+						}
+					}
+				},
+				"tags": [
+					"Teams"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "teamId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"in": "query",
+						"name": "season",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/teams/{teamId}/statrankings": {
+			"get": {
+				"operationId": "GetStatRankings",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/StatRankings"
+						}
+					}
+				},
+				"tags": [
+					"Teams"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "teamId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"in": "query",
+						"name": "season",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/nhl/teams": {
+			"get": {
+				"operationId": "GetTeams",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "expand",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "season",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "stats",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "teamIDs",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/nhl/teams/{teamId}": {
+			"get": {
+				"operationId": "GetTeam",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "teamId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"in": "query",
+						"name": "expand",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "season",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "stats",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/nhl/teams/{teamId}/roster": {
+			"get": {
+				"operationId": "GetTeamRoster",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "teamId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"in": "query",
+						"name": "expand",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "season",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "stats",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/nhl/teams/{teamId}/stats": {
+			"get": {
+				"operationId": "GetTeamStats",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "teamId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/nhl/divisions": {
+			"get": {
+				"operationId": "GetDivisions",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/nhl/divisions/{divisionId}": {
+			"get": {
+				"operationId": "GetDivision",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "divisionId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/nhl/conferences": {
+			"get": {
+				"operationId": "GetConferences",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/nhl/conferences/{conferenceId}": {
+			"get": {
+				"operationId": "GetConference",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "conferenceId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/nhl/people/{personId}": {
+			"get": {
+				"operationId": "GetPerson",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "personId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"in": "query",
+						"name": "season",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "stats",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/nhl/people/{personId}/stats": {
+			"get": {
+				"operationId": "GetPersonStats",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "personId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"in": "query",
+						"name": "stats",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "season",
+						"required": false,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/nhl/game/{gameId}/live/feed": {
+			"get": {
+				"operationId": "GetGameLiveFeed",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "gameId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/nhl/game/{gameId}/live/feed/diffPatch": {
+			"get": {
+				"operationId": "GetGameLiveFeedDiff",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "gameId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"in": "query",
+						"name": "startTimecode",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/nhl/game/{gameId}/boxscore": {
+			"get": {
+				"operationId": "GetGameBoxscore",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "gameId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/nhl/game/{gameId}/content": {
+			"get": {
+				"operationId": "GetGameContent",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "gameId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/nhl/schedule": {
+			"get": {
+				"operationId": "GetSchedule",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "date",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "expand",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "startDate",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "endDate",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "teamId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/nhl/standings": {
+			"get": {
+				"operationId": "GetStandings",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "date",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "expand",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "season",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/nhl/standingstypes": {
+			"get": {
+				"operationId": "GetStandingsTypes",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/nhl/statstypes": {
+			"get": {
+				"operationId": "GetStatsType",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/nhl/draft/current": {
+			"get": {
+				"operationId": "GetCurrentDraft",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/nhl/draft/{year}": {
+			"get": {
+				"operationId": "GetDraft",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "year",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/nhl/prospects": {
+			"get": {
+				"operationId": "GetProspects",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/nhl/prospects/{prospectId}": {
+			"get": {
+				"operationId": "GetProspect",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"NHL APIs"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "prospectId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
 			}
 		}
 	},
