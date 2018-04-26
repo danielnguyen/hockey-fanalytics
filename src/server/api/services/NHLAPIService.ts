@@ -177,12 +177,12 @@ export class NHLAPIService {
     // Prospects
 
     public getProspects(): Promise<any> {
-        const url = Config.NHL_STATSAPI_ENDPOINT + "/api/v1/prospects";
+        const url = Config.NHL_STATSAPI_ENDPOINT + "/api/v1/draft/prospects";
         return this.getResource(url);
     }
 
     public getProspect(prospectId: number): Promise<any> {
-        const url = Config.NHL_STATSAPI_ENDPOINT + "/api/v1/prospects/" + prospectId;
+        const url = Config.NHL_STATSAPI_ENDPOINT + "/api/v1/draft/prospects/" + prospectId;
         return this.getResource(url);
     }
 
